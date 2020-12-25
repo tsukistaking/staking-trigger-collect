@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 FROM gcr.io/distroless/python3
 COPY --from=build /usr/src/app/main.py /
 COPY --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
-ENTRYPOINT  [“python", "main.py"]
+ENTRYPOINT  ["python", "main.py"]
