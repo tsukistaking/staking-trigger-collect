@@ -7,8 +7,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
 RUN echo $PATH
 RUN rustup default stable
-RUN rustup install nightly-2020-10-20
-RUN rustup target add wasm32-unknown-unknown --toolchain nightly-2020-10-20
+RUN rustup install nightly-2020-09-30
+RUN rustup target add wasm32-unknown-unknown --toolchain nightly-2020-09-30
 RUN pip install --upgrade pip --upgrade setuptools 
 RUN pip install -r requirements.txt
 RUN pyinstaller main.py
