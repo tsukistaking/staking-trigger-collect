@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 RUN pyinstaller main.py
 FROM gcr.io/distroless/python3
 COPY --from=build /usr/src/app/dist /
-ENTRYPOINT  [“/usr/src/app/dist/app”]
+ENTRYPOINT  [“/usr/src/app/dist/main”]
