@@ -18,7 +18,6 @@ credentials_pub = credentials.with_claims(audience=audience)
 publisher = pubsub_v1.PublisherClient(credentials=credentials_pub)
 topic_path = publisher.topic_path(gcloud_project_id, gcloud_pubsub_topic_id)
 
-
 def main():
     substrate_connection = SubstrateInterface(url=rpc_url)
     substrate_connection.rpc_request("chain_subscribeNewHeads", [], result_handler)
