@@ -32,7 +32,7 @@ def result_handler(result):
             module_id = block_event['module_id']
             event_id = block_event['event_id']
             if module_id == "Staking" and event_id == "EraPayout":
-                print("Staking.EraPayout")
+                print(f"{module_id}.{event_id}")
                 publisher.publish(topic_path, b' ')
 
 if __name__ == "__main__":

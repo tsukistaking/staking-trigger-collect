@@ -11,7 +11,7 @@ RUN rustup target add wasm32-unknown-unknown --toolchain nightly
 RUN rustup default nightly
 RUN pip install --upgrade pip --upgrade setuptools 
 RUN pip install -r requirements.txt
-FROM gcr.io/distroless/python3
+FROM gcr.io/distroless/python3-debian10:nonroot
 COPY --from=build /usr/src/app/main.py /
 COPY --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 CMD ["main.py"]
