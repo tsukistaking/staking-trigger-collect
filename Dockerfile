@@ -13,5 +13,5 @@ RUN pip install --upgrade pip --upgrade setuptools
 RUN pip install -r requirements.txt
 FROM gcr.io/distroless/python3-debian10:nonroot
 COPY --from=build --chown=nonroot:nonroot /usr/src/app/main.py /
-COPY --from=build --chown=nonroot:nonroot /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
+COPY --from=build --chown=nonroot:nonroot /usr/local/lib/python3.7/site-packages /
 CMD ["/main.py"]
