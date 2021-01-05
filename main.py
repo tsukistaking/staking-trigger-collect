@@ -6,7 +6,6 @@ from google.auth import jwt
 from google.cloud import pubsub_v1
 
 rpc_url = os.environ["RPC_URL"]
-gcloud_api_key = os.environ["GCLOUD_API_KEY"]
 gcloud_service_json = os.environ["GCLOUD_SERVICE_JSON"]
 gcloud_project_id = os.environ["GCLOUD_PROJECT_ID"]
 gcloud_pubsub_topic_id = os.environ["GCLOUD_PUBSUB_TOPIC_ID"]
@@ -33,7 +32,7 @@ def result_handler(result):
             module_id = block_event['module_id']
             event_id = block_event['event_id']
             if module_id == "Staking" and event_id == "EraPayout":
-                print(f"{module_id}.{event_id}")
+                print("Staking.EraPayout")
                 publisher.publish(topic_path, b' ')
 
 if __name__ == "__main__":
