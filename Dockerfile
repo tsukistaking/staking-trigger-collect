@@ -1,4 +1,4 @@
-FROM python:3 AS build
+FROM python:3.7-slim-buster AS build
 WORKDIR /usr/src/app
 COPY requirements.txt main.py ./
 RUN apt update
@@ -13,5 +13,5 @@ RUN pip install --upgrade pip --upgrade setuptools
 RUN pip install -r requirements.txt
 FROM gcr.io/distroless/python3-debian10:nonroot
 COPY --from=build --chown=nonroot:nonroot /usr/src/app/main.py /
-COPY --from=build --chown=nonroot:nonroot /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY --from=build --chown=nonroot:nonroot /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
 CMD ["/main.py"]
