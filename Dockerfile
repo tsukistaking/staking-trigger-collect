@@ -12,6 +12,6 @@ RUN rustup default nightly
 RUN pip install --upgrade pip --upgrade setuptools 
 RUN pip install -r requirements.txt
 FROM gcr.io/distroless/python3-debian10:nonroot
-COPY --from=build /usr/src/app/main.py /
-COPY --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
+COPY --from=build --chown=65532:65532 /usr/src/app/main.py /
+COPY --from=build --chown=65532:65532 /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 CMD ["main.py"]
