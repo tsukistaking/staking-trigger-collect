@@ -10,6 +10,7 @@ gcloud_service_json = os.environ["GCLOUD_SERVICE_JSON"]
 gcloud_project_id = os.environ["GCLOUD_PROJECT_ID"]
 gcloud_pubsub_topic_id = os.environ["GCLOUD_PUBSUB_TOPIC_ID"]
 
+print(gcloud_service_json)
 service_account_info = json.loads(gcloud_service_json)
 audience = "https://pubsub.googleapis.com/google.pubsub.v1.Publisher"
 credentials = jwt.Credentials.from_service_account_info(service_account_info, audience=audience)
