@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 FROM gcr.io/distroless/python3-debian10:nonroot
 COPY --from=build --chown=nonroot:nonroot /usr/src/app/main.py /
 COPY --from=build --chown=nonroot:nonroot /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
-CMD ["main.py"]
+CMD ["/main.py"]
