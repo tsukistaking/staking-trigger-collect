@@ -15,6 +15,7 @@ print(gcloud_service_json)
 service_account_info = json.loads(str(gcloud_service_json))
 audience = "https://pubsub.googleapis.com/google.pubsub.v1.Publisher"
 print(service_account_info)
+print(json.dumps(service_account_info))
 credentials = jwt.Credentials.from_service_account_info(service_account_info, audience=audience)
 credentials_pub = credentials.with_claims(audience=audience)
 publisher = pubsub_v1.PublisherClient(credentials=credentials_pub)
