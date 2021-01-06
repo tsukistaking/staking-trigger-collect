@@ -12,7 +12,7 @@ gcloud_pubsub_topic_id = os.environ["GCLOUD_PUBSUB_TOPIC_ID"]
 
 print(type(gcloud_service_json))
 print(gcloud_service_json)
-service_account_info = json.loads("{}".format(gcloud_service_json))
+service_account_info = json.loads(u"{}".format(gcloud_service_json))
 audience = "https://pubsub.googleapis.com/google.pubsub.v1.Publisher"
 print(service_account_info)
 print(json.dumps(service_account_info))
