@@ -2,6 +2,7 @@ import os
 from substrateinterface import SubstrateInterface
 
 import json
+import codecs
 from google.auth import jwt
 from google.cloud import pubsub_v1
 
@@ -10,12 +11,12 @@ gcloud_service_json = os.environ["GCLOUD_SERVICE_JSON"]
 gcloud_project_id = os.environ["GCLOUD_PROJECT_ID"]
 gcloud_pubsub_topic_id = os.environ["GCLOUD_PUBSUB_TOPIC_ID"]
 
-print(type(gcloud_service_json))
-print(gcloud_service_json)
-service_account_info = json.loads(u"{}".format(gcloud_service_json))
+try: 
+    service_account_info = json.loads(codecs.decode(gcloud_service_json, 'unicode_escape'))
+except:
+    service_account_info = json.loads(gcloud_service_json)
+
 audience = "https://pubsub.googleapis.com/google.pubsub.v1.Publisher"
-print(service_account_info)
-print(json.dumps(service_account_info))
 credentials = jwt.Credentials.from_service_account_info(service_account_info, audience=audience)
 credentials_pub = credentials.with_claims(audience=audience)
 publisher = pubsub_v1.PublisherClient(credentials=credentials_pub)
